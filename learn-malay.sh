@@ -1,9 +1,9 @@
 #!/bin/bash
 
-: "${GEMINI_CONFIGS:="/usr/local/etc/learn-a-lang/gemini.conf"}"
-: "${LAST_RESPONSE_FILE:="/usr/local/etc/learn-a-lang/response.json"}"
-: "${LEARNING_STATE_FILE:="/usr/local/etc/learn-a-lang/data.state"}"
-: "${WORD_LIST_FILE:="/usr/local/etc/learn-a-lang/word-list.csv"}"
+: "${GEMINI_CONFIGS:="/usr/local/etc/let-s-learn-malay/gemini.conf"}"
+: "${LAST_RESPONSE_FILE:="/usr/local/etc/let-s-learn-malay/response.json"}"
+: "${LEARNING_STATE_FILE:="/usr/local/etc/let-s-learn-malay/data.state"}"
+: "${WORD_LIST_FILE:="/usr/local/etc/let-s-learn-malay/word-list.csv"}"
 
 TERMINAL_LENGTH="$(tput cols || echo 130)"
 declare INTERNET
