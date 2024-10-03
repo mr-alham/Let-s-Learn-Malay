@@ -32,7 +32,7 @@ display_data() {
     local WELCOME_BANNER_PID
 
     welcome_banner() {
-        local TEXT="😊 \033[0;1;38;5;077mLet's Learn Malay\033[0m 💪"
+        local TEXT="\033[0m😊 \033[0;1;38;5;077mLet's Learn Malay\033[0m 💪"
         local HALF_LEN=$(((TERMINAL_LENGTH - 27) / 2))
 
         echo -en "\033[0;38;5;098m"
@@ -158,7 +158,7 @@ display_data() {
     # footer
     for _ in $(seq 1 "${TERMINAL_LENGTH}"); do
 
-        echo -en "\033[0;35m─"
+        echo -en "\033[0;38;5;098m─"
 
     done
 
