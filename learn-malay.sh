@@ -200,6 +200,7 @@ fetch_new_data() {
     local RESPONSE
 
     PROMPT="${1}"
+    CHANCES=1
 
     # Check whether the computer has an active internet connection
     while ! internet; do
