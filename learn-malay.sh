@@ -381,7 +381,7 @@ fetch_prompt() {
 internet() {
 
     # ping -c 2 -W 5 1.1.1.1 >/dev/null 2>&1
-    timeout 5 bash -c "</dev/tcp/1.1.1.1/53"
+    timeout 5 bash -c "</dev/tcp/1.1.1.1/53" >/dev/null 2>&1
     INTERNET=$?
     return "${INTERNET}"
 
