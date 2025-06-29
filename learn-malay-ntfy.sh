@@ -208,8 +208,8 @@ construct_message() {
     local MESSAGE_TITLE
 
     # Debug: Log the raw input
-    echo "Raw response input:" >>"${LOG_FILE}"
-    echo "${1}" >>"${LOG_FILE}"
+    # echo "Raw response input:" >>"${LOG_FILE}"
+    # echo "${1}" >>"${LOG_FILE}"
 
     # Check if input is valid JSON
     if [[ -z "${1}" ]] || ! echo "${1}" | jq empty >/dev/null 2>&1; then
