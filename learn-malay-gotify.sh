@@ -46,8 +46,11 @@ file_exists() {
 send_notification() {
 
     local TITLE="${1}"
-    local MESSAGE="${2}"
-    
+    # local MESSAGE="${2}"
+    local SENTENCE1="${2}"
+    local SENTENCE2="${3}"
+    local MEANING1="${4}"
+    local MEANING2="${5}"
 
     # curl -X POST "${GOTIFY_URL}message" \
     #     -H "Content-Type: application/json" \
@@ -76,12 +79,21 @@ send_notification() {
 
     fi
 
+    # -d $'Computer 1 \nsent message!' \
+    # -d "${MESSAGE}" \
+    # -d $''"${MESSAGE}"'' \
     curl \
         -H "Title: ${TITLE}" \
-        -d "${MESSAGE}" \
+        -d "🗣️ ${SENTENCE1}
+  - ${MEANING1}
+
+🗣️ ${SENTENCE2}
+  - ${MEANING2}
+  " \
         -H "Priority: ${NTFY_PRIORITY}" \
         -H "Markdown: yes" \
         -H "Authorization: Bearer ${NTFY_TOKEN}" \
+        -H "Content-Type: multipart/form-data" \
         "${NTFY_URL}/${NTFY_TOPIC}"
 
     return 0
@@ -208,7 +220,7 @@ construct_message() {
     local DEFINITION
     local EXAMPLES
     local EXAMPLE_MEANINGS
-    local MESSAGE_BODY=""
+    # local MESSAGE_BODY=""
     local MESSAGE_TITLE
 
     # Debug: Log the raw input
@@ -249,18 +261,25 @@ construct_message() {
     IFS=$'\n' read -r -d '' -a examples_array <<<"${EXAMPLES}"
     IFS=$'\n' read -r -d '' -a meanings_array <<<"${EXAMPLE_MEANINGS}"
 
-    for i in "${!examples_array[@]}"; do
+    EXAMPLE1=${examples_array[0]:-}
+    EXAMPLE2=${examples_array[1]:-}
+    MEANING1=${meanings_array[0]:-}
+    MEANING2=${meanings_array[1]:-}
 
-        MESSAGE_BODY+="${examples_array[$i]}"
+    # for i in "${!examples_array[@]}"; do
 
-        if [[ -n "${meanings_array[$i]:-}" ]]; then
+    #     MESSAGE_BODY+="* **${examples_array[$i]}**\n"
 
-            MESSAGE_BODY+="\n(${meanings_array[$i]})\n"
+    #     if [[ -n "${meanings_array[$i]:-}" ]]; then
 
-        fi
-    done
+    #         MESSAGE_BODY+="\n"
+    #         MESSAGE_BODY+="(    * *${meanings_array[$i]}* )\n\n"
 
-    send_notification "${MESSAGE_TITLE}" "${MESSAGE_BODY}"
+    #     fi
+    # done
+
+    # send_notification "${MESSAGE_TITLE}" "${MESSAGE_BODY}"
+    send_notification "${MESSAGE_TITLE}" "${EXAMPLE1}" "${EXAMPLE2}" "${MEANING1}" "${MEANING2}"
 }
 
 # ARGS: day
@@ -331,4 +350,5 @@ main() {
 
 }
 
-main
+# main
+construct_message '{"word": {"MALAY_WORD": "selamat malam","DEFINITION": "good night","EXAMPLES": ["Selamat malam, ibu.","Selamat malam, semuanya!","Selamat malam dan mimpi indah."],"EXAMPLE_MEANINGS": ["Good night, mom.",  "Good night, everyone!",      "Good night and sweet dreams."    ]}}'
