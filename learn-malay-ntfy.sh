@@ -1,20 +1,18 @@
 #!/bin/bash
 
-# : "${GEMINI_CONFIGS:="/usr/local/etc/let-s-learn-malay/gemini.conf"}"
-# : "${LAST_RESPONSE_FILE:="/usr/local/etc/let-s-learn-malay/response.json"}"
-# : "${LEARNING_STATE_FILE:="/usr/local/etc/let-s-learn-malay/data.state"}"
-# : "${WORD_LIST_FILE:="/usr/local/etc/let-s-learn-malay/word-list.csv"}"
-# : "${NTFY_CONFIG:="/usr/local/etc/let-s-learn-malay/ntfy.conf"}"
-# : "${GOTIFY_CONFIG:="/usr/local/etc/let-s-learn-malay/gotify.conf"}"
+: "${GEMINI_CONFIGS:="/usr/local/etc/let-s-learn-malay/gemini.conf"}"
+: "${LAST_RESPONSE_FILE:="/usr/local/etc/let-s-learn-malay/response.json"}"
+: "${LEARNING_STATE_FILE:="/usr/local/etc/let-s-learn-malay/data.state"}"
+: "${WORD_LIST_FILE:="/usr/local/etc/let-s-learn-malay/word-list.csv"}"
+: "${NTFY_CONFIG:="/usr/local/etc/let-s-learn-malay/ntfy.conf"}"
 : "${LOG_FILE:="${HOME}/let-s-learn-malay.log"}"
 
 #
-: "${GEMINI_CONFIGS:="/home/alham/malay/gemini.conf"}"
-: "${LAST_RESPONSE_FILE:="/home/alham/malay/response.json"}"
-: "${LEARNING_STATE_FILE:="/home/alham/malay/data.state"}"
-: "${WORD_LIST_FILE:="/home/alham/malay/word-list.csv"}"
-: "${GOTIFY_CONFIG:="/home/alham/malay/gotify.conf"}"
-: "${NTFY_CONFIG:="/home/alham/malay/ntfy.conf"}"
+# : "${GEMINI_CONFIGS:="/home/alham/malay/gemini.conf"}"
+# : "${LAST_RESPONSE_FILE:="/home/alham/malay/response.json"}"
+# : "${LEARNING_STATE_FILE:="/home/alham/malay/data.state"}"
+# : "${WORD_LIST_FILE:="/home/alham/malay/word-list.csv"}"
+# : "${NTFY_CONFIG:="/home/alham/malay/ntfy.conf"}"
 #
 
 declare INTERNET=0
@@ -46,20 +44,10 @@ file_exists() {
 send_notification() {
 
     local TITLE="${1}"
-    # local MESSAGE="${2}"
     local SENTENCE1="${2}"
     local SENTENCE2="${3}"
     local MEANING1="${4}"
     local MEANING2="${5}"
-
-    # curl -X POST "${GOTIFY_URL}message" \
-    #     -H "Content-Type: application/json" \
-    #     -d "{
-    #         \"title\": \"${TITLE}\",
-    #         \"message\": \"${MESSAGE}\",
-    #         \"priority\": 7
-    #     }" \
-    #     -H "X-Gotify-Key:${GOTIFY_TOKEN}"
 
     if ! file_exists "${NTFY_CONFIG}"; then
 
@@ -79,21 +67,18 @@ send_notification() {
 
     fi
 
-    # -d $'Computer 1 \nsent message!' \
-    # -d "${MESSAGE}" \
-    # -d $''"${MESSAGE}"'' \
     curl \
+        -H "Markdown: yes" \
         -H "Title: ${TITLE}" \
+        -H "Priority: ${NTFY_PRIORITY}" \
+        -H "Content-Type: multipart/form-data" \
+        -H "Authorization: Bearer ${NTFY_TOKEN}" \
         -d "🗣️ ${SENTENCE1}
   - ${MEANING1}
 
 🗣️ ${SENTENCE2}
   - ${MEANING2}
   " \
-        -H "Priority: ${NTFY_PRIORITY}" \
-        -H "Markdown: yes" \
-        -H "Authorization: Bearer ${NTFY_TOKEN}" \
-        -H "Content-Type: multipart/form-data" \
         "${NTFY_URL}/${NTFY_TOPIC}"
 
     return 0
@@ -220,7 +205,6 @@ construct_message() {
     local DEFINITION
     local EXAMPLES
     local EXAMPLE_MEANINGS
-    # local MESSAGE_BODY=""
     local MESSAGE_TITLE
 
     # Debug: Log the raw input
@@ -234,12 +218,6 @@ construct_message() {
         exit 1
 
     fi
-
-    # # Extract fields with proper error handling
-    # MALAY_WORD=$(echo "${1}" | jq -r '.word.MALAY_WORD? // empty')
-    # DEFINITION=$(echo "${1}" | jq -r '.word.DEFINITION? // empty')
-    # EXAMPLES=$(echo "${1}" | jq -r '.word.EXAMPLES[]? // empty' | paste -sd "\n" -)
-    # EXAMPLE_MEANINGS=$(echo "${1}" | jq -r '.word.EXAMPLE_MEANINGS[]? // empty' | paste -sd "\n" -)
 
     # With these lines:
     MALAY_WORD=$(echo "${1}" | jq -r '(.word.MALAY_WORD // .word[0].MALAY_WORD)? // empty')
@@ -266,19 +244,6 @@ construct_message() {
     MEANING1=${meanings_array[0]:-}
     MEANING2=${meanings_array[1]:-}
 
-    # for i in "${!examples_array[@]}"; do
-
-    #     MESSAGE_BODY+="* **${examples_array[$i]}**\n"
-
-    #     if [[ -n "${meanings_array[$i]:-}" ]]; then
-
-    #         MESSAGE_BODY+="\n"
-    #         MESSAGE_BODY+="(    * *${meanings_array[$i]}* )\n\n"
-
-    #     fi
-    # done
-
-    # send_notification "${MESSAGE_TITLE}" "${MESSAGE_BODY}"
     send_notification "${MESSAGE_TITLE}" "${EXAMPLE1}" "${EXAMPLE2}" "${MEANING1}" "${MEANING2}"
 }
 
@@ -350,5 +315,4 @@ main() {
 
 }
 
-# main
-construct_message '{"word": {"MALAY_WORD": "selamat malam","DEFINITION": "good night","EXAMPLES": ["Selamat malam, ibu.","Selamat malam, semuanya!","Selamat malam dan mimpi indah."],"EXAMPLE_MEANINGS": ["Good night, mom.",  "Good night, everyone!",      "Good night and sweet dreams."    ]}}'
+main
