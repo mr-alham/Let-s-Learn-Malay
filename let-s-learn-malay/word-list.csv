@@ -1,66 +1,222 @@
-apa,khabar,terima kasih
-sila,tolong,sama-sama
-maaf,saya,faham
-tidak,faham,boleh
-tak,boleh,ya
-tidak,saya,perlukan
-bantuan,di mana,saya
-ingin,makan,apa
-minum,air,panas
-sejuk,harga,berapa
-kenapa,mahal,murah
-di mana,tandas,stesen
-bas,teksi,boleh,tunggu
-sekejap,tolong,jalan
-ke sini,jalan,ke sana
-belok,kiri,belok,kanan
-terus,pergi,datang
-tunggu,sini,selamat,tinggal
-jumpa lagi,sampai nanti
-bolehkah,anda,bantu
-berapakah,jam sekarang
-pukul,berapa,esok
-hari ini,saya lapar
-penat,kenyang,mana
-tempat,makan,saya
-mahu,minum,beli
-pergi,balik,sana
-sini,cepat,lambat
-duduk,berdiri,jalan
-tulis,baca,dengar
-faham,saya,mari
-buat,kerja,tidur
-mandi,belajar,makan
-naik,bas,kereta
-sekolah,universiti,rumah
-bercakap,dengan,siapa
-selamat pagi,selamat petang
-selamat malam,selamat jalan
-terima kasih,sama-sama
-jumpa lagi,berapa harga
-saya suka,saya mahu
-boleh saya,cuba ini
-di mana tandas,di mana kedai
-berapa jauh,saya tak faham
-bantu saya,tolong tunggu
-sila duduk,adakah anda
-okey,bagaimana ini
-nama saya,siapa nama anda
-saya lapar,saya dahaga
-sudah makan,belum makan
-bolehkah,anda tolong
-berapa harga ini,saya nak beli
-minta maaf,saya tak pasti
-bolehkah saya,simpan ini
-saya suka ini,saya tak suka ini
-saya rasa ini,bagus
-bolehkah saya,tanya
-berapa kos ini,saya mahu pergi
-ke pasar,saya perlu
-doktor,saya perlukan ubat
-saya tak sihat,boleh tunjukkan
-jalan ke hospital,saya mahu
-ke universiti,saya dari
-mana,berapa umur anda
-selamat tinggal,jumpa lagi
-saya perlu bantuan,tolong cepat
+Anda,
+Dia,
+Dan,
+Di,
+Ke,
+Apa,
+Nama,
+Ada,
+Tidak,
+Ya,
+Boleh,
+Khabar,
+Selamat,
+Terima kasih,
+Sama-sama,
+Tolong,
+Maaf,
+Jumpa lagi,
+Makan,
+Belajar,
+Pergi,
+Suka,
+Buat,
+Tidur,
+Minum,
+Datang,
+Kawan,
+Keluarga,
+Rumah,
+Buku,
+Kelas,
+Air,
+Baik,
+Lapar,
+Penat,
+Bekerja,
+Mandi,
+Masak,
+Bersiap,
+Berehat,
+Sapu,
+Menulis,
+Melihat,
+Mencari,
+Meja,
+Kertas,
+Pakaian,
+Guru,
+Pelajar,
+Papan putih,
+Jam dinding,
+Rak buku,
+Dapur,
+Hari,
+Sekarang,
+Setiap hari,
+Hujung minggu,
+Waktu/Masa,
+Bulan,
+Satu,
+Dua,
+Tiga,
+Empat,
+Tahun,
+Esok,
+Hari ini,
+Tadi,
+Belum,
+Masih,
+Sudah,
+Akan,
+Selalu,
+Warna,
+Bentuk,
+Besar,
+Baru,
+Tua,
+Muda,
+Sedap,
+Betul,
+Berapa,
+Orang,
+Tempat,
+Di mana,
+Adik-beradik,
+Datuk,
+Nenek,
+Abang,
+Kakak,
+Adik Perempuan,
+Adik lelaki,
+Isteri,
+Suami,
+Abang ipar,
+Kakak ipar,
+Anak saudara lelaki,
+Anak saudara Perempuan,
+Bapa saudara,
+Ibu saudara,
+Sepupu,
+Nota,
+Halaman,
+Alat,
+Peralatan dapur,
+Peralatan elektrik,
+Bekas,
+Peranti,
+Skrin,
+Kecil,
+Besar,
+Pilih,
+Cukur,
+Cuci baju,
+Gosok baju,
+Menyedut,
+Membersih,
+Pakai kasut,
+Potong rambut,
+Buang air besar,
+Buang air kecil,
+Suap
+Berkebun
+Menjahit
+Membantu
+Mengaduk
+Mencampur
+Memanaskan
+Menyetrika
+Menyimpan
+Membawa
+Menonton
+Membeli
+Mengambil
+Menyara
+Nasihatkan
+Beri
+Ayam
+Ikan
+Udang
+Kucing
+Harimau
+Tupai
+Aiskrim
+Pisau
+Bunga
+Kek
+Surat khabar,
+Bulat
+Bujur
+Empat segi sama,
+Segitiga
+Keras
+Cantik
+Bahagia
+Hijau
+Lapang
+Perbualan
+Telefon
+Kaunter
+Restoran
+Percutian
+Perjalanan
+Kedai
+Pantai
+Pulau
+Sungai
+Surau
+Pasar
+Tatabahasa
+Vokal
+Diftong
+Konsonan
+Gugusan Konsonan,
+Kata Nama,
+Kata Ganti Nama Diri,
+Pola Ayat Dasar,
+Frasa Nama,
+Frasa Kerja,
+Frasa Adjektif,
+Frasa Sendi,
+Kata Adjektif,
+Kata Tanya,
+Kata Tunjuk,
+Kata Kerja,
+Kata Sendi Nama,
+Kata Bantu,
+Kata Hubung,
+Kata Penguat,
+Imbuhan MeN-,
+Penanda Wacana,
+Ayat
+Frasa
+Perkataan
+Komunikasi
+Kursus
+Pensyarah
+Universiti
+Silibus
+Tugasan
+Refleksi
+Kuiz
+Pembentangan
+Penulisan
+Peperiksaan Akhir,
+Ulang Kaji,
+Objektif Pembelajaran,
+Aktiviti
+Arahan
+Pengenalan
+Perbincangan
+Penerangan
+Komunikasi
+Mempunyai
+Cadangan
+Menerima
+Menolak
+Tetapi
+Supaya
+Menggunakan
+Menerangkan
+Memahami
+Kefahaman membaca,
